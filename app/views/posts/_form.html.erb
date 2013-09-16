@@ -16,6 +16,10 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
+    <%= f.label :file_name %><br>
+    <%= f.text_field :file_name %>
+  </div>
+  <div class="field">
     <%= f.label :body %><br>
     <%= f.text_area :body %>
   </div>
@@ -30,6 +34,10 @@
   <div class="field">
     <%= f.label :header_img %><br>
     <%= f.text_field :header_img %>
+  </div>
+  <div class="field">
+    <%= f.label :tag_list, "Tags (separated by commas)" %><br />
+    <%= f.text_field :tag_list %>
   </div>
   <div class="actions">
     <%= f.submit %>

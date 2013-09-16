@@ -4,6 +4,7 @@ class PostImporter
     file_text = "Title: #{post.title}"
     file_text += "\nDate: #{post.publish_time}"
     file_text += "\nLink: #{post.link}" if post.link.present?
+    file_text += "\nTags: #{post.tag_list}" if post.tag_list.present?
     file_text += "\nImg: #{post.header_img}" if post.header_img.present?
     file_text += "\n \n#{post.body}" if post.body.present?
 
@@ -44,7 +45,7 @@ class PostImporter
             post.published = true
           end
         elsif key == 'tags'
-          # placeholder
+          post.tag_list = value
         else
           body += line
         end
@@ -104,7 +105,7 @@ class PostImporter
     # Grab all markdown files
     Dir.glob('*.{markdown,md}').each do |file|
 
-      if SyncRecord.last.present? # skip if this is the first sync
+      if SyncRecord.last.present? && Post.find_by_file_name(file).present?
 
         post = Post.find_by_file_name(file)
 
@@ -122,7 +123,7 @@ class PostImporter
 
         end
       else
-        # If this is the first sync, no need to worry about updating the file content
+        # If this is the first sync or if there's a new file, just create it
         update_or_create_post(file)
       end
     end
