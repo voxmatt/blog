@@ -8,4 +8,6 @@ class Post < ActiveRecord::Base
     self.file_name ||= self.publish_time.strftime('%Y-%m-%d') + ' ' + self.title + '.md'
     self.published ||= true
   end
+
+  acts_as_taggable
 end

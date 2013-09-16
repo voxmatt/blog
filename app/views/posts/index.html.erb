@@ -10,6 +10,9 @@
     </h3>
     <%= simple_format post.body %>
     <small>
+      <%= post.tag_list %>
+    </small>
+    <small>
       <%= link_to 'Edit', edit_post_path(post) %> |
       <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
     </small>
