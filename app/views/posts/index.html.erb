@@ -1,7 +1,13 @@
 <div id="posts">
   <% @posts.each do|post| %>
   <div id="post">
-    <h3><%= post.title %></h3>
+    <h3>
+      <% if post.link.present? %>
+        <%= link_to post.title, post.link %>
+      <% else %>
+        <%= post.title %>
+      <% end %>
+    </h3>
     <%= simple_format post.body %>
     <small>
       <%= link_to 'Edit', edit_post_path(post) %> |

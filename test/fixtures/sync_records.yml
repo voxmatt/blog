@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  files_present: MyString
+  posts_present: MyString
+
+two:
+  files_present: MyString
+  posts_present: MyString

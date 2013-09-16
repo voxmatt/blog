@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all(order:'created_at DESC')
+    @posts = Post.all(order:'publish_time DESC')
   end
 
   # GET /posts/1
@@ -69,6 +69,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :publish_time, :tags, :link, :header_img)
+      params.require(:post).permit(:title, :body, :publish_time, :link, :header_img)
     end
 end
